@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "paypal": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@paypal/mcp",
+        "--tools=all"
+      ],
+      "env": {
+        "PAYPAL_ACCESS_TOKEN": "YOUR_PAYPAL_ACCESS_TOKEN",
+        "PAYPAL_ENVIRONMENT": "SANDBOX"
+      }
+    },
+    "invoicepilot-proof-gate": {
+      "command": "npx",
+      "args": [
+        "tsx",
+        "/ABSOLUTE/PATH/TO/invoicepilot/scripts/mcp-proof-gate.ts"
+      ]
+    }
+  }
+}

@@ -1,0 +1,38 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model InvoiceRequest {
+  requestId       String   @id
+  payloadHash     String
+  draftJson       String
+
+  // PayPal operation tracking
+  status          String   @default("PENDING")
+  paypalInvoiceId String?  @unique
+  paypalStatus    String?
+  resultJson      String?
+  lastError       String?
+
+  // Proof Ledger: original extraction and approval snapshot
+  sourceNotes        String?
+  originalDraftJson  String?
+  proofSnapshotJson  String?
+  changesJson        String?
+  approvedAt         DateTime?
+  proofHash          String?
+  extractionReceiptId String?
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@index([proofHash])
+}

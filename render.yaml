@@ -1,0 +1,35 @@
+# Render Blueprint for the hosted demo.
+# UNTESTED: written from Render's documented Blueprint fields; deploy early
+# (not on deadline day) and read the build log if anything fails.
+#
+# SQLite lives on Render's ephemeral disk. Migrations run on every start, so a
+# fresh container always has a working (empty) database. Invoice history from
+# before a restart is lost; the PayPal invoices themselves are not.
+services:
+  - type: web
+    name: invoicepilot
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npx prisma generate --config prisma7.config.ts && npm run build
+    startCommand: npx prisma migrate deploy --config prisma7.config.ts && npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        value: file:./dev.db
+      - key: APPROVAL_SIGNING_SECRET
+        generateValue: true
+      - key: DEMO_USERNAME
+        value: judge
+      - key: DEMO_PASSWORD
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: PAYPAL_INVOICER_EMAIL
+        sync: false
+      - key: PAYPAL_WEBHOOK_ID
+        sync: false
