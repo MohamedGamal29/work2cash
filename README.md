@@ -58,9 +58,9 @@ Run the Proof Gate next to PayPal's official MCP server. Copy `mcp.example.json`
       "args": ["-y", "@paypal/mcp", "--tools=all"],
       "env": { "PAYPAL_ACCESS_TOKEN": "YOUR_TOKEN", "PAYPAL_ENVIRONMENT": "SANDBOX" }
     },
-    "invoicepilot-proof-gate": {
+    "Work2Cash-proof-gate": {
       "command": "npx",
-      "args": ["tsx", "/ABSOLUTE/PATH/TO/invoicepilot/scripts/mcp-proof-gate.ts"]
+      "args": ["tsx", "/ABSOLUTE/PATH/TO/Work2Cash/scripts/mcp-proof-gate.ts"]
     }
   }
 }
@@ -68,7 +68,7 @@ Run the Proof Gate next to PayPal's official MCP server. Copy `mcp.example.json`
 
 The gate server tells the agent, through its MCP `instructions`, to call `verify_invoice_claims` before creating a PayPal invoice and to proceed only on `ALLOW`. The gate needs no API key and makes no network calls, so it also runs offline.
 
-> **Honest scope:** with two separate MCP servers, the ordering is enforced by the agent following the instructions, not by PayPal. The strict, enforced path is InvoicePilot's own app, where the Proof Gate, pricing integrity check, signed receipt, and human approval all sit in front of the PayPal call. Making PayPal-side enforcement impossible to bypass would need a gateway that proxies PayPal's tools, which is future work.
+> **Honest scope:** with two separate MCP servers, the ordering is enforced by the agent following the instructions, not by PayPal. The strict, enforced path is Work2Cash's own app, where the Proof Gate, pricing integrity check, signed receipt, and human approval all sit in front of the PayPal call. Making PayPal-side enforcement impossible to bypass would need a gateway that proxies PayPal's tools, which is future work.
 
 ### What the gate does and does not prove
 
@@ -147,7 +147,7 @@ The latest authored regression suite passed **12 out of 12 test cases on Novembe
 
 ```bash
 git clone https://github.com/MohamedGamal29/work2cash.git
-cd invoicepilot
+cd Work2Cash
 ```
 
 ### 2. Install dependencies
@@ -276,7 +276,7 @@ Do not use real customer financial data or deploy the current prototype as a pub
 ## Project Structure
 
 ```text
-invoicepilot/
+Work2Cash/
 ├── app/
 │   ├── api/
 │   │   ├── gemini-test/
