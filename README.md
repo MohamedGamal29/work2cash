@@ -3,7 +3,7 @@
 
 ### AI-powered invoice drafting and PayPal Sandbox integration
 
-InvoicePilot is an AI-assisted invoice workflow application designed to help freelancers and service providers turn natural-language work descriptions into structured invoice drafts, review the extracted information, and create invoices through PayPal Sandbox.
+Work2Cash is an AI-assisted invoice workflow application designed to help freelancers and service providers turn natural-language work descriptions into structured invoice drafts, review the extracted information, and create invoices through PayPal Sandbox.
 
 The project combines Gemini-powered information extraction, deterministic invoice validation, human approval, and PayPal API integration.
 
@@ -13,7 +13,7 @@ The project combines Gemini-powered information extraction, deterministic invoic
 
 AI agents are starting to create invoices and move money from free-text messages. They can hallucinate a number, be fooled by a hidden instruction in a pasted client email, or quietly pick one of two contradictory totals. A model that is *usually* right is not good enough for payments.
 
-InvoicePilot's answer is that **an AI is never allowed to assert a financial fact it cannot quote.** The Proof Gate is a deterministic checkpoint (no model involved) that re-verifies every claim an agent makes before anything reaches PayPal:
+Work2Cash's answer is that **an AI is never allowed to assert a financial fact it cannot quote.** The Proof Gate is a deterministic checkpoint (no model involved) that re-verifies every claim an agent makes before anything reaches PayPal:
 
 ```text
    Agent ──► verify_invoice_claims ──► ALLOW ──► human approval ──► PayPal Invoicing API
