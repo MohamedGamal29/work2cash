@@ -1,5 +1,5 @@
 
-# InvoicePilot
+# Work2Cash
 
 ### AI-powered invoice drafting and PayPal Sandbox integration
 
